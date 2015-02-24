@@ -1,0 +1,31 @@
+<div class="panelp panel-info">
+  <div class="input-group form-group">
+    <label for="downPayment" id="label-addon1" class="input-group-addon control-label">Rent</label>
+    <input type="number" name="downPayment" class="form-control" aria-describedby="label-addon1" data-ng-model="rentals.deposit"/>
+  </div>
+  <div class="input-group form-group">
+    <label for="downPayment" id="label-addon1" class="input-group-addon control-label">Room Width</label>
+    <input type="number" name="downPayment" class="form-control" aria-describedby="label-addon1" data-ng-model="rentals.roomWidth"/>
+  </div>
+  <div class="input-group form-group">
+    <label for="downPayment" id="label-addon1" class="input-group-addon control-label">Room Depth</label>
+    <input type="number" name="downPayment" class="form-control" aria-describedby="label-addon1" data-ng-model="rentals.roomDepth"/>
+  </div>
+  <div class="form-group">
+    <button data-ng-click="calculate()" class="btn btn-primary"></button>
+  </div>
+
+  <div class="col-md-6">
+      <div class="well text-center">
+        <h4 class="text-center" data-ng-bind="(rentals.totalRentAmount | currency)"></h4>
+        <small class="text-center text-uppercase">Rental</small>
+      </div>
+      <div class="well text-center">
+        <h4 class="text-center" data-ng-bind="(rentals.totalRoomSize)"></h4>
+        <small class="text-center text-uppercase"></small>
+      </div>
+    </div>
+  </div>
+</div>
+
+

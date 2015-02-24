@@ -1,0 +1,46 @@
+<div class="panel panel-primary">
+  <div class="panel-heading" style="background-color:rgba(0,0,0,0.7);color:#fff;">
+    <h4>Mortgage Loan Calculator</h4>
+  </div>
+  <div class="panel-body" style="background:rgba(0,0,0,0.5)">
+    <div role="form" class="col-md-9">
+      <div class="input-group form-group">
+        <label for="downPayment" id="label-addon1" class="input-group-addon control-label">Down Payment&nbsp;({{defaults.currency}})</label>
+        <input type="number" name="downPayment" class="form-control" aria-describedby="label-addon1" data-ng-model="loan.downPayment"/>
+      </div>
+      <div class="input-group form-group">
+        <label for="principal" class="input-group-addon" id="label-addon2">Mortgage Amount&nbsp;({{defaults.currency}})</label>
+        <input type="number" name="principal" class="form-control" data-ng-model="loan.principal" aria-describedby="label-addon2"/>
+      </div>
+      <div class="input-group form-group">
+        <label for="years" class="input-group-addon" id="label-addon3">Mortgage term in years</label>
+        <input type="number" name="years" class="form-control" aria-describedby="label-addon3" step="{{defaults.stepRate}}" min="{{defaults.minYear}}" max="{{defaults.maxYear}}" data-ng-model="loan.years"/>
+      </div>
+      <div class="input-group form-group">
+        <label for="months" class="input-group-addon" id="label-addon4">Terms in months</label>
+        <input type="number" name="months" class="form-control" data-ng-model="loan.months" aria-describedby="label-addon4"/>
+      </div>
+      <div class="input-group form-group">
+      <label for="rate" class="input-group-addon" id="label-addon5">Interest rate/year (%)</label>
+        <input type="number" class="form-control" min="{{defaults.minRate}}" aria-describedby="label-addon5" max="{{defaults.maxRate}}" step="{{defaults.stepRate}}" data-ng-model="loan.rate"/>
+      </div>
+      <div class="input-group form-group">
+        <label for="startDate" class="input-group-addon" id="label-addon6">Mortgage Start Date</label>
+        <input type="date" name="startDate" class="form-control" data-ng-model="loan.startDate" aria-describedby="label-addon6"/>
+      </div>
+      <div class="form-group text-center">
+        <button class="btn btn-lg btn-primary active text-upper col-md-12" data-ng-click="calculate()" ng-disabled="!loan.principal">Calculate</button>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="well text-center">
+        <h4 class="text-center" data-ng-bind="(loan.monthlyPayments | currency:defaults.currency)"></h4>
+        <small class="text-center text-uppercase">Monthly Payments</small>
+      </div>
+      <div class="well text-center">
+        <h4 class="text-center" data-ng-bind="(loan.payOffDate | date:mediumDate)"></h4>
+        <small class="text-center text-uppercase">Pay-off Date</small>
+      </div>
+    </div>
+  </div>
+</div>
