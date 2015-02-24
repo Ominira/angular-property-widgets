@@ -5,6 +5,8 @@ Usable angular widgets for transactions in properties development and investment
 
 ```javascript
 
+bower install angular-property-widget
+
 var app = angular.module('yourAppName',['dirProperty'])
 
 ```
@@ -71,12 +73,6 @@ app.config(function(dirMortgageServiceProvider){
   .setDefaultRate(float number)
   .setDefaultPrincipalAmount(float number)
   .setCurrency(string)
-
-```
-#### Bower Install
-
-```
-bower install angular-mortgage-widget
 
 ```
 
