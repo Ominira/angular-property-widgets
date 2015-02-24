@@ -1,6 +1,14 @@
 # Angular Property Investment Widgets (dirProperty)
 Usable angular widgets for transactions in properties development and investments
 
+#### Installation
+
+```javascript
+
+var app = angular.module('yourAppName',['dirProperty'])
+
+```
+
 ## Directive: dirMortgage
 Angular directive for calculating mortgage loans...
 
@@ -39,20 +47,12 @@ dmCurrency - set locale currency
 
 ```
 
-#### Installation
-
-```javascript
-
-var app = angular.module('yourAppName',['dirMortgage'])
-
-```
-
 #### Configs
 
 - Setting attributes could also be done through a provider
 
 ```javascript
-var app = angular.module('yourAppName',['dirMortgage']);
+var app = angular.module('yourAppName',['dirProperty']);
 app.config(function(dirMortgageServiceProvider){
   dirMortgageServiceProvider.setTemplatePath('/path/to/template');
 });
