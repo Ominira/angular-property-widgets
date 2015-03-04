@@ -5,7 +5,7 @@ angular.module("../templates/dirMortgage-v2.tpl.html", []).run(["$templateCache"
     "<div class=\"panel panel-primary\">\n" +
     "  <div class=\"panel-body\" style=\"background:rgba(0,0,0,0.5)\">\n" +
     "    <div class=\"row\">\n" +
-    "      <div role=\"form\" class=\"col-md-9\" style=\"color:#fff\">\n" +
+    "      <div role=\"form\" class=\"col-md-12\" style=\"color:#fff\">\n" +
     "        <div class=\"form-group\">\n" +
     "          <label for=\"principal\" class=\"control-label\">Mortgage Amount&nbsp;({{defaults.currency}})</label>\n" +
     "          <input type=\"number\" name=\"principal\" class=\"form-control\" data-ng-model=\"loan.principal\"/>\n" +
@@ -34,7 +34,7 @@ angular.module("../templates/dirMortgage-v2.tpl.html", []).run(["$templateCache"
     "          <button class=\"btn btn-primary text-uppercase active\" style=\"width:100%\" data-ng-click=\"calculate()\" ng-disabled=\"!loan.principal\">Calculate</button>\n" +
     "        </div>\n" +
     "      </div>\n" +
-    "      <div class=\"col-md-3\">\n" +
+    "      <div class=\"col-md-12\">\n" +
     "        <div class=\"well text-center\">\n" +
     "          <h4 class=\"text-center\" data-ng-bind=\"(loan.monthlyPayments | currency:defaults.currency)\"></h4>\n" +
     "          <small class=\"text-center text-uppercase\">Monthly Payments</small>\n" +

@@ -1,7 +1,7 @@
 <div class="panel panel-primary">
   <div class="panel-body" style="background:rgba(0,0,0,0.5)">
     <div class="row">
-      <div role="form" class="col-md-9" style="color:#fff">
+      <div role="form" class="col-md-12" style="color:#fff">
         <div class="form-group">
           <label for="principal" class="control-label">Mortgage Amount&nbsp;({{defaults.currency}})</label>
           <input type="number" name="principal" class="form-control" data-ng-model="loan.principal"/>
@@ -30,7 +30,7 @@
           <button class="btn btn-primary text-uppercase active" style="width:100%" data-ng-click="calculate()" ng-disabled="!loan.principal">Calculate</button>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-12">
         <div class="well text-center">
           <h4 class="text-center" data-ng-bind="(loan.monthlyPayments | currency:defaults.currency)"></h4>
           <small class="text-center text-uppercase">Monthly Payments</small>
