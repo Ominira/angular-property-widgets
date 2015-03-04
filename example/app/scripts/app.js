@@ -28,7 +28,7 @@ angular
       });
   })
   .config(function (dirMortgageServiceProvider, dirRentalServiceProvider){
-    dirMortgageServiceProvider.setTemplatePath('bower_components/angular-mortgage-widget/templates/dirMortgage.tpl.html');
+    dirMortgageServiceProvider.setTemplatePath('bower_components/angular-mortgage-widget/templates/dirMortgage-x.tpl.html');
     dirRentalServiceProvider.setTemplatePath('bower_components/angular-mortgage-widget/templates/dirRentals.tpl.html');
     dirMortgageServiceProvider.setDefaultPrincipalAmount(1600000);
   });
