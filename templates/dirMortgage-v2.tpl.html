@@ -1,0 +1,45 @@
+<div class="panel panel-primary">
+  <div class="panel-body" style="background:rgba(0,0,0,0.5)">
+    <div class="row">
+      <div role="form" class="col-md-9" style="color:#fff">
+        <div class="form-group">
+          <label for="principal" class="control-label">Mortgage Amount&nbsp;({{defaults.currency}})</label>
+          <input type="number" name="principal" class="form-control" data-ng-model="loan.principal"/>
+        </div>
+        <div class="form-group">
+          <label for="downPayment" class="control-label">Down Payment&nbsp;({{defaults.currency}})</label>
+          <input type="number" name="downPayment" class="form-control" data-ng-model="loan.downPayment"/>
+        </div>
+        <div class="form-group">
+          <label for="years" class="control-label">Mortgage term in years</label>
+          <input type="number" name="years" class="form-control" step="{{defaults.stepRate}}" min="{{defaults.minYear}}" max="{{defaults.maxYear}}" data-ng-model="loan.years"/>
+        </div>
+        <div class="form-group">
+          <label for="months" class="control-label">Terms in months</label>
+          <input type="number" name="months" class="form-control" data-ng-model="loan.months"/>
+        </div>
+        <div class="form-group">
+          <label for="rate" class="control-label">Interest rate/year (%)</label>
+          <input type="number" class="form-control" min="{{defaults.minRate}}" max="{{defaults.maxRate}}" step="{{defaults.stepRate}}" data-ng-model="loan.rate"/>
+        </div>
+        <div class="form-group">
+          <label for="startDate" class="control-label">Mortgage Start Date</label>
+          <input type="date" name="startDate" class="form-control" data-ng-model="loan.startDate"/>
+        </div>
+        <div class="form-group text-center">
+          <button class="btn btn-primary text-uppercase active" style="width:100%" data-ng-click="calculate()" ng-disabled="!loan.principal">Calculate</button>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="well text-center">
+          <h4 class="text-center" data-ng-bind="(loan.monthlyPayments | currency:defaults.currency)"></h4>
+          <small class="text-center text-uppercase">Monthly Payments</small>
+        </div>
+        <div class="well text-center">
+          <h4 class="text-center" data-ng-bind="(loan.payOffDate | date:mediumDate)"></h4>
+          <small class="text-center text-uppercase">Pay-off Date</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

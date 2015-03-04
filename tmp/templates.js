@@ -1,4 +1,54 @@
-angular.module('templates-main', ['../templates/dirMortgage.tpl.html', '../templates/dirRentals.tpl.html']);
+angular.module('templates-main', ['../templates/dirMortgage-v2.tpl.html', '../templates/dirMortgage.tpl.html', '../templates/dirRentals.tpl.html']);
+
+angular.module("../templates/dirMortgage-v2.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("../templates/dirMortgage-v2.tpl.html",
+    "<div class=\"panel panel-primary\">\n" +
+    "  <div class=\"panel-body\" style=\"background:rgba(0,0,0,0.5)\">\n" +
+    "    <div class=\"row\">\n" +
+    "      <div role=\"form\" class=\"col-md-9\" style=\"color:#fff\">\n" +
+    "        <div class=\"form-group\">\n" +
+    "          <label for=\"principal\" class=\"control-label\">Mortgage Amount&nbsp;({{defaults.currency}})</label>\n" +
+    "          <input type=\"number\" name=\"principal\" class=\"form-control\" data-ng-model=\"loan.principal\"/>\n" +
+    "        </div>\n" +
+    "        <div class=\"form-group\">\n" +
+    "          <label for=\"downPayment\" class=\"control-label\">Down Payment&nbsp;({{defaults.currency}})</label>\n" +
+    "          <input type=\"number\" name=\"downPayment\" class=\"form-control\" data-ng-model=\"loan.downPayment\"/>\n" +
+    "        </div>\n" +
+    "        <div class=\"form-group\">\n" +
+    "          <label for=\"years\" class=\"control-label\">Mortgage term in years</label>\n" +
+    "          <input type=\"number\" name=\"years\" class=\"form-control\" step=\"{{defaults.stepRate}}\" min=\"{{defaults.minYear}}\" max=\"{{defaults.maxYear}}\" data-ng-model=\"loan.years\"/>\n" +
+    "        </div>\n" +
+    "        <div class=\"form-group\">\n" +
+    "          <label for=\"months\" class=\"control-label\">Terms in months</label>\n" +
+    "          <input type=\"number\" name=\"months\" class=\"form-control\" data-ng-model=\"loan.months\"/>\n" +
+    "        </div>\n" +
+    "        <div class=\"form-group\">\n" +
+    "          <label for=\"rate\" class=\"control-label\">Interest rate/year (%)</label>\n" +
+    "          <input type=\"number\" class=\"form-control\" min=\"{{defaults.minRate}}\" max=\"{{defaults.maxRate}}\" step=\"{{defaults.stepRate}}\" data-ng-model=\"loan.rate\"/>\n" +
+    "        </div>\n" +
+    "        <div class=\"form-group\">\n" +
+    "          <label for=\"startDate\" class=\"control-label\">Mortgage Start Date</label>\n" +
+    "          <input type=\"date\" name=\"startDate\" class=\"form-control\" data-ng-model=\"loan.startDate\"/>\n" +
+    "        </div>\n" +
+    "        <div class=\"form-group text-center\">\n" +
+    "          <button class=\"btn btn-primary text-uppercase active\" style=\"width:100%\" data-ng-click=\"calculate()\" ng-disabled=\"!loan.principal\">Calculate</button>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "      <div class=\"col-md-3\">\n" +
+    "        <div class=\"well text-center\">\n" +
+    "          <h4 class=\"text-center\" data-ng-bind=\"(loan.monthlyPayments | currency:defaults.currency)\"></h4>\n" +
+    "          <small class=\"text-center text-uppercase\">Monthly Payments</small>\n" +
+    "        </div>\n" +
+    "        <div class=\"well text-center\">\n" +
+    "          <h4 class=\"text-center\" data-ng-bind=\"(loan.payOffDate | date:mediumDate)\"></h4>\n" +
+    "          <small class=\"text-center text-uppercase\">Pay-off Date</small>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "</div>\n" +
+    "");
+}]);
 
 angular.module("../templates/dirMortgage.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../templates/dirMortgage.tpl.html",
