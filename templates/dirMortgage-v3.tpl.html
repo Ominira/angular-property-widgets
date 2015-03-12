@@ -32,12 +32,12 @@
           <legend>Mortgage Term</legend>
           <div class="custom-input">
             <em for="years">In Years</em>
-            <input type="number" name="years" class="form-control input-sm" step="{{defaults.stepRate}}" min="{{defaults.minYear}}" max="{{defaults.maxYear}}" data-ng-model="loan.years"/>
+            <input type="number" name="years" class="form-control input-sm" step="{{defaults.stepRate}}" min="{{defaults.minYear}}" max="{{defaults.maxYear}}" data-ng-model="loan.years" data-ng-disabled="loan.months > 0"/>
           </div>
           <div class="custom-input middle">or</div>
           <div class="custom-input">
             <em for="months">In Months</em>
-            <input type="number" name="months" class="form-control input-sm" data-ng-model="loan.months"/>
+            <input type="number" name="months" class="form-control input-sm" data-ng-model="loan.months" step="1" data-ng-disabled="loan.years > 0"/>
           </div>
         </div>
         <div class="form-group">
