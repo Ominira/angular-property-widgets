@@ -39,7 +39,7 @@
           scope.loan = {
             downPayment: 0,
             principal:  parseFloat(principal) || dirMortgageService.getDefaultPrincipalAmount(),
-            years: parseFloat(attrs.dmMinYear) || dirMortgageService.getMinYear(),
+            years: parseFloat(attrs.dmDefaultYear) || parseFloat(attrs.dmMinYear) || dirMortgageService.getMinYear(),
             months: 0,
             inMonths: parseFloat((dirMortgageService.getMinYear() * 12)),
             rate: parseFloat(attrs.dmDefaultRate) || dirMortgageService.getDefaultRate(),
