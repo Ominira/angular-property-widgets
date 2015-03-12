@@ -11,7 +11,7 @@
 angular
   .module('dirMortgageApp', [
     'ngRoute',
-    'dirMortgage'
+    'dirProperty'
   ])
   .config(function ($routeProvider) {
     $routeProvider
