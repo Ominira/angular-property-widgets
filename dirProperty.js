@@ -266,7 +266,7 @@
       templatePath: 'templates/dirMortgage.tpl.html',
       minYear: 1,
       maxYear: 30,
-      stepYear: 0.1,
+      stepYear: 0.5,
       minRate: 0.5,
       maxRate: 10,
       stepRate: 0.1,
