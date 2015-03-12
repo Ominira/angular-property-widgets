@@ -99,13 +99,14 @@
             totalRentAmount: 0
           };
 
+          var isNotSelectedUnit = function (unit) {
+            return unit !== nv.unitOfMeasure;
+          };
+
           scope.$watch(function () {
             return scope.rentals;
           }, function (nv) {
             if (nv.totalRoomSize) {
-              var isNotSelectedUnit = function (unit) {
-                return unit !== nv.unitOfMeasure;
-              };
               var units = nv.optUnitOfMeasure.filter(isNotSelectedUnit);
               nv.otherUnitSizes = computeEngine.getUnitsMeasurements(units, nv);
             }
@@ -271,7 +272,7 @@
       maxRate: 10,
       stepRate: 0.1,
       defaultRate: 4.0,
-      defaultPrincipalAmount: 0.0,
+      defaultPrincipalAmount: 150000.0,
       currency: '$'
     };
     this.setTemplatePath = function (path) {
