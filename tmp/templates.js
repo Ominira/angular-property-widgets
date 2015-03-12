@@ -54,30 +54,35 @@ angular.module("../templates/dirMortgage-v3.tpl.html", []).run(["$templateCache"
   $templateCache.put("../templates/dirMortgage-v3.tpl.html",
     "<div class=\"panel panel-primary\">\n" +
     "  <div class=\"panel-body\" style=\"background:rgba(0,0,0,0.5)\">\n" +
-    "    <div class=\"row\">\n" +
+    "    <style type=\"text/css\">\n" +
+    "      .dirMortgage-custom-styling .form-group{\n" +
+    "        color: #fff;\n" +
+    "      }\n" +
+    "      .dirMortgage-custom-styling label {\n" +
+    "        font-weight: normal;\n" +
+    "        font-size: 15px;\n" +
+    "      }\n" +
+    "      .dirMortgage-custom-styling legend {\n" +
+    "        color: #fff;\n" +
+    "        font-size: 15px;\n" +
+    "        margin: 0;\n" +
+    "      }\n" +
+    "      .dirMortgage-custom-styling .custom-input {\n" +
+    "        display: table-cell;\n" +
+    "        vertical-align: middle;\n" +
+    "        text-align: center;\n" +
+    "        width: 45%;\n" +
+    "      }\n" +
+    "      .dirMortgage-custom-styling .custom-input.middle {\n" +
+    "        width: 10%;\n" +
+    "        padding: 0px 10px;\n" +
+    "      }\n" +
+    "      .dirMortgage-custom-styling .inactive-input {\n" +
+    "        background: gainsboro;\n" +
+    "      }\n" +
+    "    </style>\n" +
+    "    <div class=\"row  dirMortgage-custom-styling\">\n" +
     "      <div role=\"form\" class=\"col-md-12\">\n" +
-    "        <style type=\"text/css\">\n" +
-    "          .form-group{\n" +
-    "            color: #fff;\n" +
-    "          }\n" +
-    "          label {\n" +
-    "            font-weight: normal;\n" +
-    "            font-size: 15px;\n" +
-    "          }\n" +
-    "          legend {\n" +
-    "            color: #fff;\n" +
-    "            font-size: 15px;\n" +
-    "          }\n" +
-    "          .custom-input {\n" +
-    "            display: table-cell;\n" +
-    "            vertical-align: middle;\n" +
-    "            text-align: center;\n" +
-    "            width: 45%;\n" +
-    "          }\n" +
-    "          .custom-input.middle {\n" +
-    "            width: 10%;\n" +
-    "          }\n" +
-    "        </style>\n" +
     "        <div class=\"form-group\">\n" +
     "          <label for=\"principal\">Mortgage Amount&nbsp;({{defaults.currency}})</label>\n" +
     "          <input type=\"number\" name=\"principal\" class=\"form-control input-sm\" data-ng-model=\"loan.principal\"/>\n" +
@@ -86,12 +91,12 @@ angular.module("../templates/dirMortgage-v3.tpl.html", []).run(["$templateCache"
     "          <legend>Mortgage Term</legend>\n" +
     "          <div class=\"custom-input\">\n" +
     "            <em for=\"years\">In Years</em>\n" +
-    "            <input type=\"number\" name=\"years\" class=\"form-control input-sm\" step=\"{{defaults.stepYear}}\" min=\"{{defaults.minYear}}\" max=\"{{defaults.maxYear}}\" data-ng-model=\"loan.years\" data-ng-disabled=\"loan.months > 0\"/>\n" +
+    "            <input type=\"number\" name=\"years\" class=\"form-control input-sm\" step=\"{{defaults.stepYear}}\" min=\"{{defaults.minYear}}\" max=\"{{defaults.maxYear}}\" data-ng-model=\"loan.years\" data-ng-focus=\"focusYear()\" data-ng-class=\"{'inactive-input': loan.months > 0}\"/>\n" +
     "          </div>\n" +
     "          <div class=\"custom-input middle\">or</div>\n" +
     "          <div class=\"custom-input\">\n" +
     "            <em for=\"months\">In Months</em>\n" +
-    "            <input type=\"number\" name=\"months\" class=\"form-control input-sm\" data-ng-model=\"loan.months\" step=\"1\" data-ng-disabled=\"loan.years > 0\"/>\n" +
+    "            <input type=\"number\" name=\"months\" class=\"form-control input-sm\" data-ng-model=\"loan.months\" step=\"1\" data-ng-focus=\"focusMonth()\" data-ng-class=\"{'inactive-input': loan.years > 0}\"/>\n" +
     "          </div>\n" +
     "        </div>\n" +
     "        <div class=\"form-group\">\n" +

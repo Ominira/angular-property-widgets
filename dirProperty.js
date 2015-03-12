@@ -73,6 +73,20 @@
             computeEngine.calculateMortgage(scope.loan);
           };
 
+          scope.focusYear = function () {
+            if(scope.loan.months > 0){
+              scope.loan.months = 0;
+              scope.loan.years = 1;
+            }
+          };
+
+          scope.focusMonth = function () {
+            if(scope.loan.years > 0){
+              scope.loan.years = 0;
+              scope.loan.months = 12;
+            }
+          };
+
           $log.debug(element);
         };
       }
