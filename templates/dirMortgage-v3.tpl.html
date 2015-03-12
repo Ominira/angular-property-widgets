@@ -1,0 +1,56 @@
+<div class="panel panel-primary">
+  <div class="panel-body" style="background:rgba(0,0,0,0.5)">
+    <div class="row">
+      <div role="form" class="col-md-12">
+        <style type="text/css">
+          .form-group{
+            color: #fff;
+          }
+          label {
+            font-weight: normal;
+            font-size: 15px;
+          }
+          legend {
+            color: #fff;
+            font-size: 15px;
+          }
+          .custom-input {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            width: 45%;
+          }
+          .custom-input.middle {
+            width: 10%;
+          }
+        </style>
+        <div class="form-group">
+          <label for="principal">Mortgage Amount&nbsp;({{defaults.currency}})</label>
+          <input type="number" name="principal" class="form-control input-sm" data-ng-model="loan.principal"/>
+        </div>
+        <div class="form-group col-md-12">
+          <legend>Mortgage Term</legend>
+          <div class="custom-input">
+            <em for="years">In Years</em>
+            <input type="number" name="years" class="form-control input-sm" step="{{defaults.stepRate}}" min="{{defaults.minYear}}" max="{{defaults.maxYear}}" data-ng-model="loan.years"/>
+          </div>
+          <div class="custom-input middle">or</div>
+          <div class="custom-input">
+            <em for="months">In Months</em>
+            <input type="number" name="months" class="form-control input-sm" data-ng-model="loan.months"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="rate">Interest Rate/Year (%)</label>
+          <input type="number" class="form-control input-sm" min="{{defaults.minRate}}" max="{{defaults.maxRate}}" step="{{defaults.stepRate}}" data-ng-model="loan.rate"/>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="well text-center">
+          <h4 class="text-center" data-ng-bind="(loan.monthlyPayments | currency:defaults.currency)"></h4>
+          <small class="text-center text-uppercase">Monthly Payments</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
