@@ -1,9 +1,9 @@
-angular.module('templates-main', ['../templates/dirMortgage-v2.tpl.html', '../templates/dirMortgage.tpl.html', '../templates/dirRentals.tpl.html']);
+angular.module('templates-main', ['../templates/dirMortgage-v2.tpl.html', '../templates/dirMortgage-v3.tpl.html', '../templates/dirMortgage.tpl.html', '../templates/dirRentals.tpl.html']);
 
 angular.module("../templates/dirMortgage-v2.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../templates/dirMortgage-v2.tpl.html",
-    "<div class=\"panel panel-primary\">\n" +
-    "  <div class=\"panel-body\" style=\"background:rgba(0,0,0,0.5)\">\n" +
+    "<div class=\"panel panel-primary\" style=\"background:none;border:none;\">\n" +
+    "  <div class=\"panel-body\">\n" +
     "    <div class=\"row\">\n" +
     "      <div role=\"form\" class=\"col-md-12\" style=\"color:#fff\">\n" +
     "        <div class=\"form-group\">\n" +
@@ -42,6 +42,67 @@ angular.module("../templates/dirMortgage-v2.tpl.html", []).run(["$templateCache"
     "        <div class=\"well text-center\">\n" +
     "          <h4 class=\"text-center\" data-ng-bind=\"(loan.payOffDate | date:mediumDate)\"></h4>\n" +
     "          <small class=\"text-center text-uppercase\">Pay-off Date</small>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "</div>\n" +
+    "");
+}]);
+
+angular.module("../templates/dirMortgage-v3.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("../templates/dirMortgage-v3.tpl.html",
+    "<div class=\"panel panel-primary\">\n" +
+    "  <div class=\"panel-body\" style=\"background:rgba(0,0,0,0.5)\">\n" +
+    "    <div class=\"row\">\n" +
+    "      <div role=\"form\" class=\"col-md-12\">\n" +
+    "        <style type=\"text/css\">\n" +
+    "          .form-group{\n" +
+    "            color: #fff;\n" +
+    "          }\n" +
+    "          label {\n" +
+    "            font-weight: normal;\n" +
+    "            font-size: 15px;\n" +
+    "          }\n" +
+    "          legend {\n" +
+    "            color: #fff;\n" +
+    "            font-size: 15px;\n" +
+    "          }\n" +
+    "          .custom-input {\n" +
+    "            display: table-cell;\n" +
+    "            vertical-align: middle;\n" +
+    "            text-align: center;\n" +
+    "            width: 45%;\n" +
+    "          }\n" +
+    "          .custom-input.middle {\n" +
+    "            width: 10%;\n" +
+    "          }\n" +
+    "        </style>\n" +
+    "        <div class=\"form-group\">\n" +
+    "          <label for=\"principal\">Mortgage Amount&nbsp;({{defaults.currency}})</label>\n" +
+    "          <input type=\"number\" name=\"principal\" class=\"form-control input-sm\" data-ng-model=\"loan.principal\"/>\n" +
+    "        </div>\n" +
+    "        <div class=\"form-group col-md-12\">\n" +
+    "          <legend>Mortgage Term</legend>\n" +
+    "          <div class=\"custom-input\">\n" +
+    "            <em for=\"years\">In Years</em>\n" +
+    "            <input type=\"number\" name=\"years\" class=\"form-control input-sm\" step=\"{{defaults.stepYear}}\" min=\"{{defaults.minYear}}\" max=\"{{defaults.maxYear}}\" data-ng-model=\"loan.years\" data-ng-disabled=\"loan.months > 0\"/>\n" +
+    "          </div>\n" +
+    "          <div class=\"custom-input middle\">or</div>\n" +
+    "          <div class=\"custom-input\">\n" +
+    "            <em for=\"months\">In Months</em>\n" +
+    "            <input type=\"number\" name=\"months\" class=\"form-control input-sm\" data-ng-model=\"loan.months\" step=\"1\" data-ng-disabled=\"loan.years > 0\"/>\n" +
+    "          </div>\n" +
+    "        </div>\n" +
+    "        <div class=\"form-group\">\n" +
+    "          <label for=\"rate\">Interest Rate/Year (%)</label>\n" +
+    "          <input type=\"number\" class=\"form-control input-sm\" min=\"{{defaults.minRate}}\" max=\"{{defaults.maxRate}}\" step=\"{{defaults.stepRate}}\" data-ng-model=\"loan.rate\"/>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "      <div class=\"col-md-12\">\n" +
+    "        <div class=\"well text-center\">\n" +
+    "          <h4 class=\"text-center\" data-ng-bind=\"(loan.monthlyPayments | currency:defaults.currency)\"></h4>\n" +
+    "          <small class=\"text-center text-uppercase\">Monthly Payments</small>\n" +
     "        </div>\n" +
     "      </div>\n" +
     "    </div>\n" +

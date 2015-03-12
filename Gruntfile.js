@@ -65,7 +65,8 @@ module.exports = function (grunt) {
           'src/dirProperty.js',
           'templates/dirMortgage.tpl.html',
           'templates/dirRentals.tpl.html',
-          'templates/dirMortgage-v2.tpl.html'
+          'templates/dirMortgage-v2.tpl.html',
+          'templates/dirMortgage-v3.tpl.html'
         ],
         dest: 'dist'
       }
