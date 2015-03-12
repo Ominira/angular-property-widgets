@@ -271,7 +271,7 @@
   module.provider('dirMortgageService', function () {
     var dirMortgageValues = {
       templatePath: '../templates/dirMortgage-v3.tpl.html',
-      minYear: 1,
+      minYear: 15,
       maxYear: 30,
       stepYear: 0.5,
       minRate: 0.5,
