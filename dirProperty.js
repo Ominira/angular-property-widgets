@@ -41,6 +41,7 @@
             principal:  parseFloat(principal) || dirMortgageService.getDefaultPrincipalAmount(),
             years: parseFloat(attrs.dmMinYear) || dirMortgageService.getMinYear(),
             months: 0,
+            inMonths: parseFloat((dirMortgageService.getMinYear() * 12)),
             rate: parseFloat(attrs.dmDefaultRate) || dirMortgageService.getDefaultRate(),
             startDate: new Date(),
             monthlyPayments: 0,
@@ -60,12 +61,12 @@
             return scope.loan;
           }, function (nv) {
             if (nv.years > 0) {
-              loan.months = 0;
-              scope.loan.InMonths = parseFloat((nv * 12).toFixed(0));
+              nv.months = 0;
+              scope.loan.inMonths = parseFloat((nv.years * 12).toFixed(0));
             } else if (nv.months) {
-              loan.years = 0
+              nv.years = 0
             }
-            computeEngine.calculateMortgage(nv);
+            scope.calculate();
           }, true);
 
           scope.calculate = function () {
@@ -270,7 +271,7 @@
   module.provider('dirMortgageService', function () {
     var dirMortgageValues = {
       templatePath: 'templates/dirMortgage.tpl.html',
-      minYear: 0,
+      minYear: 1,
       maxYear: 30,
       stepYear: 0.5,
       minRate: 0.5,
