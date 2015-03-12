@@ -40,7 +40,7 @@
             downPayment: 0,
             principal:  parseFloat(principal) || dirMortgageService.getDefaultPrincipalAmount(),
             years: parseFloat(attrs.dmMinYear) || dirMortgageService.getMinYear(),
-            months: (dirMortgageService.getMinYear() * 12),
+            months: 0,
             rate: parseFloat(attrs.dmDefaultRate) || dirMortgageService.getDefaultRate(),
             startDate: new Date(),
             monthlyPayments: 0,
@@ -59,9 +59,13 @@
           scope.$watch(function () {
             return scope.loan;
           }, function (nv) {
-            if (nv.years) {
-              scope.loan.months = parseFloat((nv.years * 12).toFixed(0));
+            if (nv.years > 0) {
+              loan.months = 0;
+              scope.loan.InMonths = parseFloat((nv * 12).toFixed(0));
+            } else if (nv.months) {
+              loan.years = 0
             }
+            computeEngine.calculateMortgage(nv);
           }, true);
 
           scope.calculate = function () {
@@ -125,17 +129,18 @@
     var service = {};
     service.calculateMortgage = function (loan) {
       var principal;
+      var month = loan.months > 0? loan.months : loan.inMonths;
       if (loan.downPayment && loan.principal > 0) {
         principal = (loan.principal - loan.downPayment);
       } else {
         principal = loan.principal;
       }
       var interestRatePerMonth = ((loan.rate / 100) / 12);
-      var term = Math.pow((1 + interestRatePerMonth), loan.months);
+      var term = Math.pow((1 + interestRatePerMonth), month);
       try {
         loan.monthlyPayments = (principal * ((interestRatePerMonth * term) / (term - 1)));
         service.overrideDate();
-        loan.payOffDate = (new Date(loan.startDate).addMonths(loan.months));
+        loan.payOffDate = (new Date(loan.startDate).addMonths(month));
       } catch (err) {
         throw 'Loan Calculation Exception: ' + err;
       }
@@ -265,7 +270,7 @@
   module.provider('dirMortgageService', function () {
     var dirMortgageValues = {
       templatePath: 'templates/dirMortgage.tpl.html',
-      minYear: 1,
+      minYear: 0,
       maxYear: 30,
       stepYear: 0.5,
       minRate: 0.5,
