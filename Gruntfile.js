@@ -66,6 +66,7 @@ module.exports = function (grunt) {
           'templates/dirMortgage.tpl.html',
           'templates/dirMortgage-v2.tpl.html',
           'templates/dirMortgage-v3.tpl.html',
+          'templates/dirMortgage-v4.tpl.html',
           'templates/dirRentals.tpl.html',
           'templates/dirRentals-v2.tpl.html'
         ],
