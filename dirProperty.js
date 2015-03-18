@@ -240,7 +240,7 @@
 
   module.provider('dirRentalService', function () {
     var unitOfMeasureOptions = ['metres', 'yards', 'feet', 'inches', 'centimetres'];
-    var templatePath = 'templates/dirRentals.tpl.html';
+    var templatePath = '../templates/dirRentals-v2.tpl.html';
     this.setUnitOfMeasures = function (options) {
       unitOfMeasureOptions = options.split(', ');
     };
