@@ -1,4 +1,4 @@
-<div class="panel">
+<div class="panel panel-primary">
   <div class="panel-body" style="background:rgba(0,0,0,0.5)">
     <style type="text/css">
       .dirRentals-custom-styling .form-group{
@@ -17,7 +17,7 @@
         display: table-cell;
         vertical-align: middle;
         text-align: center;
-        margin-right: 4px;
+        padding-right: 10px;
         width: 40%;
       }
       .dirRentals-custom-styling .inactive-input {
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="well table-responsive">
-          <table class="table table-condensed table-hover table-striped">
+          <table class="table table-condensed">
             <tr>
               <td colspan="2">Rent per {{::rentals.unitOfMeasure}}:</td>
             <tr/>
@@ -61,20 +61,20 @@
               <td colspan="2" ng-bind="((rentals.unitUtilities | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)" align="right"></td>
             </tr>
             <tr>
-              <td colspan="2">Deposit amount:</td>
+              <td colspan="2">Deposit Amount:</td>
             <tr/>
             <tr>
               <td colspan="2" ng-bind="(rentals.deposit | currency:defaults.currency)" align="right"></td>
             </tr>
             <tr>
-              <th colspan="2" >Total rent:</th>
+              <th colspan="2" >Total Rent ({{::rentals.duration}}):</th>
             </tr>
             <tr>
-              <td>Initial ({{::rentals.duration}}):</td>
+              <td>Initial:</td>
               <td ng-bind="(rentals.totalRentAmount | currency:defaults.currency)" align="right"></td>
             </tr>
             <tr>
-              <td>Subsequent ({{::rentals.duration}}):</td>
+              <td>Subsequent:</td>
               <td ng-bind="((rentals.totalRentAmount - rentals.deposit) | currency:defaults.currency)" align="right"></td>
             </tr>
           </table>
