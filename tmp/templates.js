@@ -52,7 +52,7 @@ angular.module("../templates/dirMortgage-v2.tpl.html", []).run(["$templateCache"
 
 angular.module("../templates/dirMortgage-v3.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../templates/dirMortgage-v3.tpl.html",
-    "<div class=\"panel panel-primary\">\n" +
+    "<div class=\"panel\">\n" +
     "  <div class=\"panel-body\" style=\"background:rgba(0,0,0,0.5)\">\n" +
     "    <style type=\"text/css\">\n" +
     "      .dirMortgage-custom-styling .form-group{\n" +
