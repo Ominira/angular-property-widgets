@@ -1,0 +1,69 @@
+<div class="panel panel-primary" style="border:none;background-color:transparent;">
+  <div class="panel-body">
+    <style type="text/css">
+      .dirMortgage-custom-styling .form-group{
+        color: #fff;
+      }
+      .dirMortgage-custom-styling label {
+        font-weight: normal;
+        font-size: 15px;
+      }
+      .dirMortgage-custom-styling legend {
+        color: #fff;
+        font-size: 15px;
+        margin: 0;
+      }
+      .dirMortgage-custom-styling .custom-input {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        width: 45%;
+      }
+      .dirMortgage-custom-styling .custom-input.middle {
+        width: 10%;
+        padding: 0px 10px;
+      }
+      .dirMortgage-custom-styling .inactive-input {
+        background: gainsboro;
+      }
+      .dirMortgage-custom-styling well {
+        background:darkslategray;
+        padding:12px;
+        margin-bottom:10px;
+        color:#fff;
+        border: none;
+        border-radius:0px;
+      }
+    </style>
+    <div class="row  dirMortgage-custom-styling">
+      <div role="form" class="col-md-12">
+        <div class="form-group">
+          <label for="principal">Mortgage Amount&nbsp;({{::defaults.currency}})</label>
+          <input type="number" name="principal" class="form-control input-sm" data-ng-model="::loan.principal"/>
+        </div>
+        <div class="form-group col-md-12">
+          <legend>Mortgage Term</legend>
+          <div class="custom-input">
+            <em for="years">In Years</em>
+            <input type="number" name="years" class="form-control input-sm" step="{{::defaults.stepYear}}" min="{{::defaults.minYear}}" max="{{::defaults.maxYear}}" data-ng-model="::loan.years" data-ng-focus="focusYear()" data-ng-class="{'inactive-input': loan.months > 0}"/>
+          </div>
+          <div class="custom-input middle">or</div>
+          <div class="custom-input">
+            <em for="months">In Months</em>
+            <input type="number" name="months" class="form-control input-sm" data-ng-model="::loan.months" step="1" data-ng-focus="focusMonth()" data-ng-class="{'inactive-input': loan.years > 0}"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="rate">Interest Rate/Year (%)</label>
+          <input type="number" class="form-control input-sm" min="{{::defaults.minRate}}" max="{{::defaults.maxRate}}" step="{{::defaults.stepRate}}" data-ng-model="::loan.rate"/>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="well text-center">
+          <h4 class="text-center" data-ng-bind="::(loan.monthlyPayments | currency:defaults.currency)"></h4>
+          <small class="text-center text-uppercase">Monthly Payments</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
