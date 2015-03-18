@@ -106,7 +106,7 @@ angular.module("../templates/dirMortgage-v3.tpl.html", []).run(["$templateCache"
     "      </div>\n" +
     "      <div class=\"col-md-12\">\n" +
     "        <div class=\"well text-center\">\n" +
-    "          <h4 class=\"text-center\" data-ng-bind=\"(loan.monthlyPayments | currency:defaults.currency)\"></h4>\n" +
+    "          <h4 class=\"text-center\" data-ng-bind=\"::(loan.monthlyPayments | currency:defaults.currency)\"></h4>\n" +
     "          <small class=\"text-center text-uppercase\">Monthly Payments</small>\n" +
     "        </div>\n" +
     "      </div>\n" +
@@ -203,7 +203,7 @@ angular.module("../templates/dirRentals-v2.tpl.html", []).run(["$templateCache",
     "            <input type=\"number\" name=\"rents\" class=\"form-control input-sm\" data-ng-model=\"::rentals.rents\"/>\n" +
     "          </div>\n" +
     "          <div class=\"custom-input\">\n" +
-    "            <label for=\"sizes\">Size</label>\n" +
+    "            <label for=\"sizes\">Size({{::rentals.unitOfMeasure}})</label>\n" +
     "            <input type=\"number\" name=\"sizes\" class=\"form-control input-sm\" data-ng-model=\"::rentals.sizes\"/>\n" +
     "          </div>\n" +
     "        </div>\n" +
@@ -223,30 +223,30 @@ angular.module("../templates/dirRentals-v2.tpl.html", []).run(["$templateCache",
     "              <td colspan=\"2\">Rent per {{::rentals.unitOfMeasure}}:</td>\n" +
     "            <tr/>\n" +
     "            <tr>\n" +
-    "              <td colspan=\"2\" ng-bind=\"((rentals.unitRent | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)\" align=\"right\"></td>\n" +
+    "              <td colspan=\"2\" ng-bind=\"::((rentals.unitRent | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)\" align=\"right\"></td>\n" +
     "            </tr>\n" +
     "            <tr>\n" +
     "              <td colspan=\"2\">Utilities per {{::rentals.unitOfMeasure}}:</td>\n" +
     "            <tr/>\n" +
     "            <tr>\n" +
-    "              <td colspan=\"2\" ng-bind=\"((rentals.unitUtilities | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)\" align=\"right\"></td>\n" +
+    "              <td colspan=\"2\" ng-bind=\"::((rentals.unitUtilities | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)\" align=\"right\"></td>\n" +
     "            </tr>\n" +
     "            <tr>\n" +
     "              <td colspan=\"2\">Deposit Amount:</td>\n" +
     "            <tr/>\n" +
     "            <tr>\n" +
-    "              <td colspan=\"2\" ng-bind=\"(rentals.deposit | currency:defaults.currency)\" align=\"right\"></td>\n" +
+    "              <td colspan=\"2\" ng-bind=\"::(rentals.deposit | currency:defaults.currency)\" align=\"right\"></td>\n" +
     "            </tr>\n" +
     "            <tr>\n" +
     "              <th colspan=\"2\" >Total Rent ({{::rentals.duration}}):</th>\n" +
     "            </tr>\n" +
     "            <tr>\n" +
     "              <td>Initial:</td>\n" +
-    "              <td ng-bind=\"(rentals.totalRentAmount | currency:defaults.currency)\" align=\"right\"></td>\n" +
+    "              <td ng-bind=\"::(rentals.totalRentAmount | currency:defaults.currency)\" align=\"right\"></td>\n" +
     "            </tr>\n" +
     "            <tr>\n" +
     "              <td>Subsequent:</td>\n" +
-    "              <td ng-bind=\"((rentals.totalRentAmount - rentals.deposit) | currency:defaults.currency)\" align=\"right\"></td>\n" +
+    "              <td ng-bind=\"::((rentals.totalRentAmount - rentals.deposit) | currency:defaults.currency)\" align=\"right\"></td>\n" +
     "            </tr>\n" +
     "          </table>\n" +
     "        </div>\n" +
