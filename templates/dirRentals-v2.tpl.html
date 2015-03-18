@@ -1,0 +1,87 @@
+<div class="panel">
+  <div class="panel-body" style="background:rgba(0,0,0,0.5)">
+    <style type="text/css">
+      .dirRentals-custom-styling .form-group{
+        color: #fff;
+      }
+      .dirRentals-custom-styling label {
+        font-weight: normal;
+        font-size: 15px;
+      }
+      .dirRentals-custom-styling legend {
+        color: #fff;
+        font-size: 15px;
+        margin: 0;
+      }
+      .dirRentals-custom-styling .custom-input {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        margin-right: 4px;
+        width: 40%;
+      }
+      .dirRentals-custom-styling .inactive-input {
+        background: gainsboro;
+      }
+    </style>
+    <div class="row  dirRentals-custom-styling">
+      <div role="form" class="col-md-12">
+        <div class="form-group">
+          <div class="custom-input">
+            <label for="rents">Rent({{::defaults.currency}})</label>
+            <input type="number" name="rents" class="form-control input-sm" data-ng-model="::rentals.rents"/>
+          </div>
+          <div class="custom-input">
+            <label for="sizes">Size</label>
+            <input type="number" name="sizes" class="form-control input-sm" data-ng-model="::rentals.sizes"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="custom-input">
+            <label for="depositterm">Deposit({{::rentals.duration}})</label>
+            <input type="number" name="depositterm" class="form-control input-sm" data-ng-model="::rentals.depositTerms"/>
+          </div>
+          <div class="custom-input">
+            <label for="utitlies">Utilities({{::rentals.duration}})</label>
+            <input type="number" name="utilities" class="form-control input-sm" data-ng-model="::rentals.utilities"/>
+          </div>
+        </div>
+        <div class="well table-responsive">
+          <table class="table table-condensed table-hover table-striped">
+            <tr>
+              <td colspan="2">Rent per {{::rentals.unitOfMeasure}}:</td>
+            <tr/>
+            <tr>
+              <td colspan="2" ng-bind="((rentals.unitRent | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)" align="right"></td>
+            </tr>
+            <tr>
+              <td colspan="2">Utilities per {{::rentals.unitOfMeasure}}:</td>
+            <tr/>
+            <tr>
+              <td colspan="2" ng-bind="((rentals.unitUtilities | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)" align="right"></td>
+            </tr>
+            <tr>
+              <td colspan="2">Deposit amount:</td>
+            <tr/>
+            <tr>
+              <td colspan="2" ng-bind="(rentals.deposit | currency:defaults.currency)" align="right"></td>
+            </tr>
+            <tr>
+              <th colspan="2" >Total rent:</th>
+            </tr>
+            <tr>
+              <td>Initial ({{::rentals.duration}}):</td>
+              <td ng-bind="(rentals.totalRentAmount | currency:defaults.currency)" align="right"></td>
+            </tr>
+            <tr>
+              <td>Subsequent ({{::rentals.duration}}):</td>
+              <td ng-bind="((rentals.totalRentAmount - rentals.deposit) | currency:defaults.currency)" align="right"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
