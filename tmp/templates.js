@@ -1,4 +1,4 @@
-angular.module('templates-main', ['../templates/dirMortgage-v2.tpl.html', '../templates/dirMortgage-v3.tpl.html', '../templates/dirMortgage.tpl.html', '../templates/dirRentals.tpl.html']);
+angular.module('templates-main', ['../templates/dirMortgage-v2.tpl.html', '../templates/dirMortgage-v3.tpl.html', '../templates/dirMortgage.tpl.html', '../templates/dirRentals-v2.tpl.html', '../templates/dirRentals.tpl.html']);
 
 angular.module("../templates/dirMortgage-v2.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../templates/dirMortgage-v2.tpl.html",
@@ -167,9 +167,101 @@ angular.module("../templates/dirMortgage.tpl.html", []).run(["$templateCache", f
     "");
 }]);
 
+angular.module("../templates/dirRentals-v2.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("../templates/dirRentals-v2.tpl.html",
+    "<div class=\"panel\">\n" +
+    "  <div class=\"panel-body\" style=\"background:rgba(0,0,0,0.5)\">\n" +
+    "    <style type=\"text/css\">\n" +
+    "      .dirRentals-custom-styling .form-group{\n" +
+    "        color: #fff;\n" +
+    "      }\n" +
+    "      .dirRentals-custom-styling label {\n" +
+    "        font-weight: normal;\n" +
+    "        font-size: 15px;\n" +
+    "      }\n" +
+    "      .dirRentals-custom-styling legend {\n" +
+    "        color: #fff;\n" +
+    "        font-size: 15px;\n" +
+    "        margin: 0;\n" +
+    "      }\n" +
+    "      .dirRentals-custom-styling .custom-input {\n" +
+    "        display: table-cell;\n" +
+    "        vertical-align: middle;\n" +
+    "        text-align: center;\n" +
+    "        margin-right: 4px;\n" +
+    "        width: 40%;\n" +
+    "      }\n" +
+    "      .dirRentals-custom-styling .inactive-input {\n" +
+    "        background: gainsboro;\n" +
+    "      }\n" +
+    "    </style>\n" +
+    "    <div class=\"row  dirRentals-custom-styling\">\n" +
+    "      <div role=\"form\" class=\"col-md-12\">\n" +
+    "        <div class=\"form-group\">\n" +
+    "          <div class=\"custom-input\">\n" +
+    "            <label for=\"rents\">Rent({{::defaults.currency}})</label>\n" +
+    "            <input type=\"number\" name=\"rents\" class=\"form-control input-sm\" data-ng-model=\"::rentals.rents\"/>\n" +
+    "          </div>\n" +
+    "          <div class=\"custom-input\">\n" +
+    "            <label for=\"sizes\">Size</label>\n" +
+    "            <input type=\"number\" name=\"sizes\" class=\"form-control input-sm\" data-ng-model=\"::rentals.sizes\"/>\n" +
+    "          </div>\n" +
+    "        </div>\n" +
+    "        <div class=\"form-group\">\n" +
+    "          <div class=\"custom-input\">\n" +
+    "            <label for=\"depositterm\">Deposit({{::rentals.duration}})</label>\n" +
+    "            <input type=\"number\" name=\"depositterm\" class=\"form-control input-sm\" data-ng-model=\"::rentals.depositTerms\"/>\n" +
+    "          </div>\n" +
+    "          <div class=\"custom-input\">\n" +
+    "            <label for=\"utitlies\">Utilities({{::rentals.duration}})</label>\n" +
+    "            <input type=\"number\" name=\"utilities\" class=\"form-control input-sm\" data-ng-model=\"::rentals.utilities\"/>\n" +
+    "          </div>\n" +
+    "        </div>\n" +
+    "        <div class=\"well table-responsive\">\n" +
+    "          <table class=\"table table-condensed table-hover table-striped\">\n" +
+    "            <tr>\n" +
+    "              <td colspan=\"2\">Rent per {{::rentals.unitOfMeasure}}:</td>\n" +
+    "            <tr/>\n" +
+    "            <tr>\n" +
+    "              <td colspan=\"2\" ng-bind=\"((rentals.unitRent | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)\" align=\"right\"></td>\n" +
+    "            </tr>\n" +
+    "            <tr>\n" +
+    "              <td colspan=\"2\">Utilities per {{::rentals.unitOfMeasure}}:</td>\n" +
+    "            <tr/>\n" +
+    "            <tr>\n" +
+    "              <td colspan=\"2\" ng-bind=\"((rentals.unitUtilities | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)\" align=\"right\"></td>\n" +
+    "            </tr>\n" +
+    "            <tr>\n" +
+    "              <td colspan=\"2\">Deposit amount:</td>\n" +
+    "            <tr/>\n" +
+    "            <tr>\n" +
+    "              <td colspan=\"2\" ng-bind=\"(rentals.deposit | currency:defaults.currency)\" align=\"right\"></td>\n" +
+    "            </tr>\n" +
+    "            <tr>\n" +
+    "              <th colspan=\"2\" >Total rent:</th>\n" +
+    "            </tr>\n" +
+    "            <tr>\n" +
+    "              <td>Initial ({{::rentals.duration}}):</td>\n" +
+    "              <td ng-bind=\"(rentals.totalRentAmount | currency:defaults.currency)\" align=\"right\"></td>\n" +
+    "            </tr>\n" +
+    "            <tr>\n" +
+    "              <td>Subsequent ({{::rentals.duration}}):</td>\n" +
+    "              <td ng-bind=\"((rentals.totalRentAmount - rentals.deposit) | currency:defaults.currency)\" align=\"right\"></td>\n" +
+    "            </tr>\n" +
+    "          </table>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "</div>\n" +
+    "\n" +
+    "\n" +
+    "");
+}]);
+
 angular.module("../templates/dirRentals.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../templates/dirRentals.tpl.html",
-    "<div class=\"panel panel-info\">\n" +
+    "<div class=\"panel panel-primary\">\n" +
     "  <div class=\"panel-body\">\n" +
     "    <div class=\"input-group form-group\">\n" +
     "      <label for=\"Rent\" id=\"label-addon1\" class=\"input-group-addon control-label\">Rent</label>\n" +
