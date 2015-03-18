@@ -1,5 +1,5 @@
-<div class="panel panel-primary">
-  <div class="panel-body" style="background:rgba(0,0,0,0.5)">
+<div class="panel panel-default" style="border:none;background-color:transparent;">
+  <div class="panel-body">
     <style type="text/css">
       .dirRentals-custom-styling .form-group{
         color: #fff;
@@ -22,6 +22,14 @@
       }
       .dirRentals-custom-styling .inactive-input {
         background: gainsboro;
+      }
+      .dirRentals-custom-styling well {
+        background:darkslategray;
+        padding:12px;
+        margin-bottom:10px;
+        color:#fff;
+        border: none;
+        border-radius:0px;
       }
     </style>
     <div class="row  dirRentals-custom-styling">
@@ -49,19 +57,19 @@
         <div class="well table-responsive">
           <table class="table table-condensed">
             <tr>
-              <td colspan="2">Rent per {{::rentals.unitOfMeasure}}:</td>
+              <th colspan="2">Rent per {{::rentals.unitOfMeasure}}:</th>
             <tr/>
             <tr>
-              <td colspan="2" ng-bind="::((rentals.unitRent | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)" align="right"></td>
+              <td colspan="2" ng-bind="::(rentals.unitRent | currency:defaults.currency)" align="right"></td>
             </tr>
             <tr>
-              <td colspan="2">Utilities per {{::rentals.unitOfMeasure}}:</td>
+              <th colspan="2">Utilities per {{::rentals.unitOfMeasure}}:</th>
             <tr/>
             <tr>
-              <td colspan="2" ng-bind="::((rentals.unitUtilities | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)" align="right"></td>
+              <td colspan="2" ng-bind="::(rentals.unitUtilities | currency:defaults.currency)" align="right"></td>
             </tr>
             <tr>
-              <td colspan="2">Deposit Amount:</td>
+              <th colspan="2">Deposit Amount:</th>
             <tr/>
             <tr>
               <td colspan="2" ng-bind="::(rentals.deposit | currency:defaults.currency)" align="right"></td>
@@ -70,7 +78,7 @@
               <th colspan="2" >Total Rent ({{::rentals.duration}}):</th>
             </tr>
             <tr>
-              <td>Initial:</td>
+              <td>First:</td>
               <td ng-bind="::(rentals.totalRentAmount | currency:defaults.currency)" align="right"></td>
             </tr>
             <tr>
