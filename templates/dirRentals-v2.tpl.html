@@ -52,30 +52,30 @@
               <td colspan="2">Rent per {{::rentals.unitOfMeasure}}:</td>
             <tr/>
             <tr>
-              <td colspan="2" ng-bind="((rentals.unitRent | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)" align="right"></td>
+              <td colspan="2" ng-bind="::((rentals.unitRent | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)" align="right"></td>
             </tr>
             <tr>
               <td colspan="2">Utilities per {{::rentals.unitOfMeasure}}:</td>
             <tr/>
             <tr>
-              <td colspan="2" ng-bind="((rentals.unitUtilities | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)" align="right"></td>
+              <td colspan="2" ng-bind="::((rentals.unitUtilities | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)" align="right"></td>
             </tr>
             <tr>
               <td colspan="2">Deposit Amount:</td>
             <tr/>
             <tr>
-              <td colspan="2" ng-bind="(rentals.deposit | currency:defaults.currency)" align="right"></td>
+              <td colspan="2" ng-bind="::(rentals.deposit | currency:defaults.currency)" align="right"></td>
             </tr>
             <tr>
               <th colspan="2" >Total Rent ({{::rentals.duration}}):</th>
             </tr>
             <tr>
               <td>Initial:</td>
-              <td ng-bind="(rentals.totalRentAmount | currency:defaults.currency)" align="right"></td>
+              <td ng-bind="::(rentals.totalRentAmount | currency:defaults.currency)" align="right"></td>
             </tr>
             <tr>
               <td>Subsequent:</td>
-              <td ng-bind="((rentals.totalRentAmount - rentals.deposit) | currency:defaults.currency)" align="right"></td>
+              <td ng-bind="::((rentals.totalRentAmount - rentals.deposit) | currency:defaults.currency)" align="right"></td>
             </tr>
           </table>
         </div>
