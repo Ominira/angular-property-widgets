@@ -146,7 +146,7 @@ angular.module("../templates/dirMortgage-v4.tpl.html", []).run(["$templateCache"
     "      .dirMortgage-custom-styling .inactive-input {\n" +
     "        background: gainsboro;\n" +
     "      }\n" +
-    "      .dirMortgage-custom-styling well {\n" +
+    "      .dirMortgage-custom-styling .well {\n" +
     "        background:darkslategray;\n" +
     "        padding:12px;\n" +
     "        margin-bottom:10px;\n" +
@@ -268,7 +268,7 @@ angular.module("../templates/dirRentals-v2.tpl.html", []).run(["$templateCache",
     "      .dirRentals-custom-styling .inactive-input {\n" +
     "        background: gainsboro;\n" +
     "      }\n" +
-    "      .dirRentals-custom-styling well {\n" +
+    "      .dirRentals-custom-styling .well {\n" +
     "        background:darkslategray;\n" +
     "        padding:12px;\n" +
     "        margin-bottom:10px;\n" +
