@@ -64,7 +64,7 @@
               nv.months = 0;
               scope.loan.inMonths = parseFloat((nv.years * 12).toFixed(0));
             } else if (nv.months) {
-              nv.years = 0
+              nv.years = 0;
             }
             scope.calculate();
           }, true);
@@ -74,14 +74,14 @@
           };
 
           scope.focusYear = function () {
-            if(scope.loan.months > 0){
+            if (scope.loan.months > 0) {
               scope.loan.months = 0;
               scope.loan.years = 1;
             }
           };
 
           scope.focusMonth = function () {
-            if(scope.loan.years > 0){
+            if (scope.loan.years > 0) {
               scope.loan.years = 0;
               scope.loan.months = 12;
             }
@@ -110,25 +110,32 @@
             utilities: $parse(attrs.drUtilitiesFee)(scope) || attrs.drUtilitiesFee || 0,
             estimatedSizeUtils: $parse(attrs.drEstimatedSizeUtils)(scope) || attrs.drEstimatedSizeUtils || 0,
             rents: $parse(attrs.drRent)(scope) || attrs.drRent || 0,
+            sizes: $parse(attrs.drSize)(scope) || attrs.drSize || 0,
             roomWidth: $parse(attrs.drRoomWidth)(scope) || attrs.drRoomWidth || 0.00,
             roomDepth: $parse(attrs.drRoomDepth)(scope) || attrs.drRoomDepth || 0.00,
             unitOfMeasure: $parse(attrs.drUnitOfMeasure)(scope) || attrs.drUnitOfMeasure || dirRentalService.getUnitOfMeasures()[0],
             optUnitOfMeasure: $parse(attrs.drOptUnitOfMeasure)(scope) || attrs.drOptUnitOfMeasure || dirRentalService.getUnitOfMeasures(),
             totalRoomSize: 0,
-            totalRentAmount: 0
+            totalRentAmount: 0,
+            duration: $parse(attrs.drDuration)(scope) || attrs.drDuration || "month",
+            unitRent: 0,
+            unitUtilities: 0
           };
 
-          var isNotSelectedUnit = function (unit) {
-            return unit !== nv.unitOfMeasure;
+          scope.defaults = {
+            currency: $parse(attrs.drCurrency)(scope) || attrs.drCurrency || "$"
           };
 
           scope.$watch(function () {
             return scope.rentals;
           }, function (nv) {
-            if (nv.totalRoomSize) {
-              var units = nv.optUnitOfMeasure.filter(isNotSelectedUnit);
-              nv.otherUnitSizes = computeEngine.getUnitsMeasurements(units, nv);
-            }
+            // if (nv.totalRoomSize) {
+            //   var units = nv.optUnitOfMeasure.filter(function (unit) {
+            //     return unit !== nv.unitOfMeasure;
+            //   });
+            //   nv.otherUnitSizes = computeEngine.getUnitsMeasurements(units, nv);
+            // }
+            scope.calculate();
           }, true);
 
           scope.calculate = function () {
@@ -144,7 +151,7 @@
     var service = {};
     service.calculateMortgage = function (loan) {
       var principal;
-      var month = loan.months > 0? loan.months : loan.inMonths;
+      var month = loan.months > 0 ? loan.months : loan.inMonths;
       if (loan.downPayment && loan.principal > 0) {
         principal = (loan.principal - loan.downPayment);
       } else {
@@ -162,17 +169,21 @@
     };
     service.calculateRent = function (rent) {
       try {
-        for (var key in rent) {
+        var key;
+        for (key in rent) {
           if (rent.hasOwnProperty(key) && Number(rent[key])) {
             parseFloat(rent[key]);
           }
         }
       } catch (e) {
-        console.log("exception: ",e);
+        console.log("exception: ", e);
       }
 
-      rent.totalRentAmount = (rent.rents + rent.deposit + rent.utilities + rent.estimatedSizeUtils);
-      rent.totalRoomSize = (rent.roomWidth * rent.roomDepth).toFixed(4);
+      rent.unitUtilities = (rent.utilities/rent.sizes).toFixed(2);
+      rent.unitRent = (rent.rents/rent.sizes).toFixed(2);
+      rent.deposit = (rent.depositTerms * rent.rents);
+      rent.totalRentAmount = (rent.rents + rent.deposit + rent.utilities);
+      //rent.totalRoomSize = (rent.roomWidth * rent.roomDepth).toFixed(4);
     };
     service.getUnitsMeasurements = function (units, rental) {
       var conversions = dirRentalService.getConversionUnits();
@@ -185,7 +196,7 @@
     service.calculateUnits = function (unitConversions, unit, rental) {
       var unitOfMeasures = dirRentalService.getUnitOfMeasures();
       var returnValue, selectedUnit = rental.unitOfMeasure;
-      if(~[unitOfMeasures[0],unitOfMeasures[1]].indexOf(selectedUnit)) {
+      if (~[unitOfMeasures[0],unitOfMeasures[1]].indexOf(selectedUnit)) {
         returnValue = ((rental.roomWidth * unitConversions[unit]) * (rental.roomDepth * unitConversions[unit]));
       } else if (selectedUnit === unitOfMeasures[2]) {
         if(~[unitOfMeasures[0],unitOfMeasures[1]].indexOf(unit)) {
