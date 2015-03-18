@@ -52,7 +52,7 @@ angular.module("../templates/dirMortgage-v2.tpl.html", []).run(["$templateCache"
 
 angular.module("../templates/dirMortgage-v3.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../templates/dirMortgage-v3.tpl.html",
-    "<div class=\"panel\">\n" +
+    "<div class=\"panel panel-primary\">\n" +
     "  <div class=\"panel-body\" style=\"background:rgba(0,0,0,0.5)\">\n" +
     "    <style type=\"text/css\">\n" +
     "      .dirMortgage-custom-styling .form-group{\n" +
@@ -84,24 +84,24 @@ angular.module("../templates/dirMortgage-v3.tpl.html", []).run(["$templateCache"
     "    <div class=\"row  dirMortgage-custom-styling\">\n" +
     "      <div role=\"form\" class=\"col-md-12\">\n" +
     "        <div class=\"form-group\">\n" +
-    "          <label for=\"principal\">Mortgage Amount&nbsp;({{defaults.currency}})</label>\n" +
-    "          <input type=\"number\" name=\"principal\" class=\"form-control input-sm\" data-ng-model=\"loan.principal\"/>\n" +
+    "          <label for=\"principal\">Mortgage Amount&nbsp;({{::defaults.currency}})</label>\n" +
+    "          <input type=\"number\" name=\"principal\" class=\"form-control input-sm\" data-ng-model=\"::loan.principal\"/>\n" +
     "        </div>\n" +
     "        <div class=\"form-group col-md-12\">\n" +
     "          <legend>Mortgage Term</legend>\n" +
     "          <div class=\"custom-input\">\n" +
     "            <em for=\"years\">In Years</em>\n" +
-    "            <input type=\"number\" name=\"years\" class=\"form-control input-sm\" step=\"{{defaults.stepYear}}\" min=\"{{defaults.minYear}}\" max=\"{{defaults.maxYear}}\" data-ng-model=\"loan.years\" data-ng-focus=\"focusYear()\" data-ng-class=\"{'inactive-input': loan.months > 0}\"/>\n" +
+    "            <input type=\"number\" name=\"years\" class=\"form-control input-sm\" step=\"{{::defaults.stepYear}}\" min=\"{{::defaults.minYear}}\" max=\"{{::defaults.maxYear}}\" data-ng-model=\"::loan.years\" data-ng-focus=\"focusYear()\" data-ng-class=\"{'inactive-input': loan.months > 0}\"/>\n" +
     "          </div>\n" +
     "          <div class=\"custom-input middle\">or</div>\n" +
     "          <div class=\"custom-input\">\n" +
     "            <em for=\"months\">In Months</em>\n" +
-    "            <input type=\"number\" name=\"months\" class=\"form-control input-sm\" data-ng-model=\"loan.months\" step=\"1\" data-ng-focus=\"focusMonth()\" data-ng-class=\"{'inactive-input': loan.years > 0}\"/>\n" +
+    "            <input type=\"number\" name=\"months\" class=\"form-control input-sm\" data-ng-model=\"::loan.months\" step=\"1\" data-ng-focus=\"focusMonth()\" data-ng-class=\"{'inactive-input': loan.years > 0}\"/>\n" +
     "          </div>\n" +
     "        </div>\n" +
     "        <div class=\"form-group\">\n" +
     "          <label for=\"rate\">Interest Rate/Year (%)</label>\n" +
-    "          <input type=\"number\" class=\"form-control input-sm\" min=\"{{defaults.minRate}}\" max=\"{{defaults.maxRate}}\" step=\"{{defaults.stepRate}}\" data-ng-model=\"loan.rate\"/>\n" +
+    "          <input type=\"number\" class=\"form-control input-sm\" min=\"{{::defaults.minRate}}\" max=\"{{::defaults.maxRate}}\" step=\"{{::defaults.stepRate}}\" data-ng-model=\"::loan.rate\"/>\n" +
     "        </div>\n" +
     "      </div>\n" +
     "      <div class=\"col-md-12\">\n" +
@@ -169,7 +169,7 @@ angular.module("../templates/dirMortgage.tpl.html", []).run(["$templateCache", f
 
 angular.module("../templates/dirRentals-v2.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../templates/dirRentals-v2.tpl.html",
-    "<div class=\"panel\">\n" +
+    "<div class=\"panel panel-primary\">\n" +
     "  <div class=\"panel-body\" style=\"background:rgba(0,0,0,0.5)\">\n" +
     "    <style type=\"text/css\">\n" +
     "      .dirRentals-custom-styling .form-group{\n" +
@@ -188,7 +188,7 @@ angular.module("../templates/dirRentals-v2.tpl.html", []).run(["$templateCache",
     "        display: table-cell;\n" +
     "        vertical-align: middle;\n" +
     "        text-align: center;\n" +
-    "        margin-right: 4px;\n" +
+    "        padding-right: 10px;\n" +
     "        width: 40%;\n" +
     "      }\n" +
     "      .dirRentals-custom-styling .inactive-input {\n" +
@@ -218,7 +218,7 @@ angular.module("../templates/dirRentals-v2.tpl.html", []).run(["$templateCache",
     "          </div>\n" +
     "        </div>\n" +
     "        <div class=\"well table-responsive\">\n" +
-    "          <table class=\"table table-condensed table-hover table-striped\">\n" +
+    "          <table class=\"table table-condensed\">\n" +
     "            <tr>\n" +
     "              <td colspan=\"2\">Rent per {{::rentals.unitOfMeasure}}:</td>\n" +
     "            <tr/>\n" +
@@ -232,20 +232,20 @@ angular.module("../templates/dirRentals-v2.tpl.html", []).run(["$templateCache",
     "              <td colspan=\"2\" ng-bind=\"((rentals.unitUtilities | currency:defaults.currency)+' per '+ rentals.unitOfMeasure)\" align=\"right\"></td>\n" +
     "            </tr>\n" +
     "            <tr>\n" +
-    "              <td colspan=\"2\">Deposit amount:</td>\n" +
+    "              <td colspan=\"2\">Deposit Amount:</td>\n" +
     "            <tr/>\n" +
     "            <tr>\n" +
     "              <td colspan=\"2\" ng-bind=\"(rentals.deposit | currency:defaults.currency)\" align=\"right\"></td>\n" +
     "            </tr>\n" +
     "            <tr>\n" +
-    "              <th colspan=\"2\" >Total rent:</th>\n" +
+    "              <th colspan=\"2\" >Total Rent ({{::rentals.duration}}):</th>\n" +
     "            </tr>\n" +
     "            <tr>\n" +
-    "              <td>Initial ({{::rentals.duration}}):</td>\n" +
+    "              <td>Initial:</td>\n" +
     "              <td ng-bind=\"(rentals.totalRentAmount | currency:defaults.currency)\" align=\"right\"></td>\n" +
     "            </tr>\n" +
     "            <tr>\n" +
-    "              <td>Subsequent ({{::rentals.duration}}):</td>\n" +
+    "              <td>Subsequent:</td>\n" +
     "              <td ng-bind=\"((rentals.totalRentAmount - rentals.deposit) | currency:defaults.currency)\" align=\"right\"></td>\n" +
     "            </tr>\n" +
     "          </table>\n" +

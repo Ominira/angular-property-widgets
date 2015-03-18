@@ -1,4 +1,4 @@
-<div class="panel">
+<div class="panel panel-primary">
   <div class="panel-body" style="background:rgba(0,0,0,0.5)">
     <style type="text/css">
       .dirMortgage-custom-styling .form-group{
@@ -30,24 +30,24 @@
     <div class="row  dirMortgage-custom-styling">
       <div role="form" class="col-md-12">
         <div class="form-group">
-          <label for="principal">Mortgage Amount&nbsp;({{defaults.currency}})</label>
-          <input type="number" name="principal" class="form-control input-sm" data-ng-model="loan.principal"/>
+          <label for="principal">Mortgage Amount&nbsp;({{::defaults.currency}})</label>
+          <input type="number" name="principal" class="form-control input-sm" data-ng-model="::loan.principal"/>
         </div>
         <div class="form-group col-md-12">
           <legend>Mortgage Term</legend>
           <div class="custom-input">
             <em for="years">In Years</em>
-            <input type="number" name="years" class="form-control input-sm" step="{{defaults.stepYear}}" min="{{defaults.minYear}}" max="{{defaults.maxYear}}" data-ng-model="loan.years" data-ng-focus="focusYear()" data-ng-class="{'inactive-input': loan.months > 0}"/>
+            <input type="number" name="years" class="form-control input-sm" step="{{::defaults.stepYear}}" min="{{::defaults.minYear}}" max="{{::defaults.maxYear}}" data-ng-model="::loan.years" data-ng-focus="focusYear()" data-ng-class="{'inactive-input': loan.months > 0}"/>
           </div>
           <div class="custom-input middle">or</div>
           <div class="custom-input">
             <em for="months">In Months</em>
-            <input type="number" name="months" class="form-control input-sm" data-ng-model="loan.months" step="1" data-ng-focus="focusMonth()" data-ng-class="{'inactive-input': loan.years > 0}"/>
+            <input type="number" name="months" class="form-control input-sm" data-ng-model="::loan.months" step="1" data-ng-focus="focusMonth()" data-ng-class="{'inactive-input': loan.years > 0}"/>
           </div>
         </div>
         <div class="form-group">
           <label for="rate">Interest Rate/Year (%)</label>
-          <input type="number" class="form-control input-sm" min="{{defaults.minRate}}" max="{{defaults.maxRate}}" step="{{defaults.stepRate}}" data-ng-model="loan.rate"/>
+          <input type="number" class="form-control input-sm" min="{{::defaults.minRate}}" max="{{::defaults.maxRate}}" step="{{::defaults.stepRate}}" data-ng-model="::loan.rate"/>
         </div>
       </div>
       <div class="col-md-12">
